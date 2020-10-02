@@ -1,0 +1,24 @@
+with "hal";
+with "cortex_m0";
+with "nrf5x_common.gpr";
+
+project NRF51 is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "zfp-cortex-m0";
+
+   for Source_Dirs use ("src/devices/nrf51",
+                        "src/drivers/nrf_common",
+                        "src/drivers/nrf51",
+                        "src/svd/nrf51");
+
+   for Object_Dir use "obj/nrf51/";
+   for Library_Dir use "lib/nrf51/";
+
+   for Library_Name use "nrf51";
+   for Library_Version use Nrf5x_Common'Library_Version;
+
+   package Compiler renames Nrf5x_Common.Compiler;
+   package Binder renames Nrf5x_Common.Binder;
+
+end NRF51;
